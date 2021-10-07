@@ -95,7 +95,7 @@ export const VIRTUALS = [
   { name: "EHB", value: "ehb" },
 ];
 
-export const ALL_METRICS = { ...SKILLS, ...BOSSES, ...ACTIVITIES, ...VIRTUALS };
+export const ALL_METRICS = [...SKILLS, ...BOSSES, ...ACTIVITIES, ...VIRTUALS];
 
 export const MEMBER_SKILLS = [
   "agility",
@@ -181,10 +181,8 @@ export function getMinimumBossKc(metric: string): number {
   }
 }
 
-export function getAbbreviation(abbreviation: string): string {
-  if (!abbreviation || abbreviation.length === 0) {
-    return null;
-  }
+export function getAbbreviation(abbreviation: string): string | null {
+  if (!abbreviation || abbreviation.length === 0) return null;
 
   switch (abbreviation.toLowerCase()) {
     // Bosses
